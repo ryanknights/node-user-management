@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>User</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="jumbotron text-center">
+
+            <% if (typeof successMessage !== 'undefined' && successMessage.length > 0) { %>
+                <div class="alert alert-success">
+                    <%- successMessage %>
+                </div>
+            <% } %>
+
+            <% if (typeof errorMessage !== 'undefined' && errorMessage.length > 0) { %>
+                <div class="alert alert-danger">
+                    <%- errorMessage %>
+                </div>
+            <% } %>
+
+            <h1>Viewing User <strong><%=user.username%></strong></h1>
+
+            <a href="/" class="btn btn-primary">View All Users</a>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">User Information</h3>
+                </div>
+                <div class="panel-body">
+                    <form action="/user/<%=user._id%>" method="post">
+                        <input type="hidden" name="method" value="update" />
+                        <p><strong>Name</strong>: <input type="text" name="name" value="<%=user.name%>" /></p>
+                        <p><strong>Username</strong>: <input type="text" name="username" value="<%=user.username%>" /></p>
+                        <p><strong>Name</strong>: <input type="email" name="email" value="<%=user.email%>" /></p>
+                        <button type="submit" class="btn btn-primary">Update User</a>
+                    </form>
+                    <form action="/user/<%=user._id%>" method="post">
+                        <input type="hidden" name="method" value="delete" />
+                        <input type="hidden" name="id" value="<%=user._id%>" />
+                        <button type="submit" class="btn btn-danger">Delete User</a>
+                    </form>
+                </div>
+            </div>    
+        </div>
+
+    </div>
+</body>
+
+</html>

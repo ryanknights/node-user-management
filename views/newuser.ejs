@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Node Authentication</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="jumbotron text-center">
+            <h1>Node User Management</h1>
+            <h2>New User</h2>
+			
+			<% if (errors.length > 0) { %>
+
+				<div class="alert alert-warning">
+					<ul class="list-unstyled">
+						<% errors.forEach(function (err) { %>
+							<li><%= err %></li>
+						<% }); %>
+					</ul>
+				</div>
+
+	    	<% } %>
+
+            <form action="/newuser" method="POST">
+            	<input type="text" name="name" <% if (typeof user !== 'undefined' && user.name !== '') { %> value="<%= user.name %>" <% } %> placeholder="Name..." />
+            	<input type="text" name="username" <% if (typeof user !== 'undefined' && user.username !== '') { %> value="<%= user.username %>" <% } %> placeholder="Username..." />
+            	<input type="email" name="email" <% if (typeof user !== 'undefined' && user.email !== '') { %> value="<%= user.email %>" <% } %> placeholder="Email..." />
+            	<button type="submit">Add User</button>
+            </form>
+        </div>
+
+    </div>
+</body>
+
+</html>
